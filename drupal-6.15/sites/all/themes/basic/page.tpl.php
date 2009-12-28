@@ -13,7 +13,6 @@
 
   <body class="<?php print $body_classes; ?>">
     
-    <div id="skip"><a href="#content">Skip to Content</a> <a href="#navigation">Skip to Navigation</a></div>  
     <div id="page">
 
     <!-- ______________________ HEADER _______________________ -->
@@ -66,8 +65,6 @@
 
           <?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
             <div id="content-header">
-
-              <?php print $breadcrumb; ?>
 
               <?php if ($title): ?>
                 <h1 class="title"><?php print $title; ?></h1>

@@ -7,6 +7,10 @@
 
     <?php print $picture; ?>
 
+    <?php if ($terms): ?>
+      <div class="taxonomy"><?php print $terms; ?></div>
+    <?php endif;?>
+
     <?php if ($submitted): ?>
       <span class="submitted"><?php print $submitted; ?></span>
     <?php endif; ?>
@@ -14,10 +18,6 @@
     <div class="content">
       <?php print $content; ?>
     </div>
-
-    <?php if ($terms): ?>
-      <div class="taxonomy"><?php print $terms; ?></div>
-    <?php endif;?>
 
     <?php if ($links): ?> 
       <div class="links"> <?php print $links; ?></div>

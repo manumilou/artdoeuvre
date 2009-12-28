@@ -8,19 +8,21 @@ body {
    * Setting up font size, leading and font family
    * http://www.markboulton.co.uk/journal/comments/five-simple-steps-to-better-typography
    */
-  font: 13px/1.5em "Helvetica Neue", helvetica, Arial, sans-serif;
+  font: 13px/1.5em helvetica, Arial, sans-serif;
   letter-spacing:0.03em;
+  color: #2a2b2c;
+  background: url(images/bg-branches-2.png) no-repeat top right;
 }
 
 /* Links */
 
 a:link, a:visited {
-  color: blue;
+  color: #096a39;
   text-decoration: none;
 }
 
 a:hover, a:active {
-  color: red;
+  color: #012e17;
   text-decoration: underline;
 }
 
@@ -33,9 +35,16 @@ h1 {
 	font-weight:300;
 	padding: 0 0 0.5em;
 	margin: 0;
+	color: #124058;
 }
 
-h2 {font-size:1.8em;font-weight:300;margin-bottom:0.75em;}
+h2 {
+	font-size:1.8em;
+	font-weight:300;
+	margin-bottom:0.75em;
+	color: #124058;
+}
+
 h3 {font-size:1.4em;margin-bottom:1em;}
 h4 {font-size:1.2em;margin-bottom:0.8em;}
 h5 {font-size:1.1em;font-weight:600;margin-bottom:0;}
@@ -161,4 +170,20 @@ div.status {
 .field-type-filefield  {
 	padding: 10px;
 	float:left;
+}
+
+/**
+ * Taxonomy terms style
+ */
+.taxonomy ul li a, 
+.taxonomy ul li a:hover
+{
+	color: #fff;
+	text-decoration: none;
+	width: 100%;
+}
+
+.taxonomy ul li {
+	background: #79b3d0;
+	padding: 2px 5px 2px 5px;
 }

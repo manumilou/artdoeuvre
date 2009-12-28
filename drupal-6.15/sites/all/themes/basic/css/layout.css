@@ -15,9 +15,8 @@
 	width: 960px; /* edit to change the width of the page */
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
 	margin-top: 30px;
-	border: 10px dotted #e76d0c;
 	-moz-border-radius: 20px;
-	padding: 5px;
+	padding: 15px;
 
 
 /** LAYOUT RULES
