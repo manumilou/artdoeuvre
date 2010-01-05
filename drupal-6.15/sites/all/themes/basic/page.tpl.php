@@ -125,6 +125,7 @@
 
       </div> <!-- /main -->
 
+    </div> <!-- /page -->
       <!-- ______________________ FOOTER _______________________ -->
 
       <?php if(!empty($footer_message) || !empty($footer_block)): ?>
@@ -134,7 +135,6 @@
         </div> <!-- /footer -->
       <?php endif; ?>
 
-    </div> <!-- /page -->
     <?php print $closure; ?>
   </body>
 </html>

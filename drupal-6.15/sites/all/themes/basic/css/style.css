@@ -14,28 +14,31 @@ body {
   background: url(images/bg-branches-2.png) no-repeat top right;
 }
 
+
 /* Links */
 
 a:link, a:visited {
-  color: #096a39;
   text-decoration: none;
+  color: #e76d0c;
 }
 
 a:hover, a:active {
-  color: #012e17;
   text-decoration: underline;
+  font-weight: bold;
+  color: #e76d0c;
 }
 
 /* Titles  */
 
 h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
 
-h1 {
+h1
+{
 	font-size: 2.2em;
 	font-weight:300;
 	padding: 0 0 0.5em;
 	margin: 0;
-	color: #124058;
+	color: #6272d0;
 }
 
 h2 {
@@ -53,7 +56,7 @@ h6 {font-size:1em;font-weight:bold;}
 /* Paragraph Styles */
 
 p {
-  margin:0 0 1em 0;
+  margin:0 0 0 0;
 }
 
 /* List Styles  */
@@ -160,7 +163,15 @@ div.status {
 #navigation { background-color: #feffa5; }
 
 #header {
-	margin-top: 30px;
+    margin: auto;
+	margin-top: 15px;
+    margin-bottom: 20px;
+	width: 900px; /* edit to change the width of the page */
+	-moz-border-radius: 20px;
+    border: 4px solid #d0d6e8;
+	padding: 10px;
+    background: #dedede;
+    text-align: center;
 }
 
 #logo-title {
@@ -185,5 +196,95 @@ div.status {
 
 .taxonomy ul li {
 	background: #79b3d0;
-	padding: 2px 5px 2px 5px;
+	padding: 2px 15px 2px 15px;
+}
+
+.views-field-tid span a, 
+.views-field-tid span a:hover
+{
+	color: #fff;
+	text-decoration: none;
+	width: 100%;
+}
+
+.views-field-tid span {
+	background: #79b3d0;
+	padding: 2px 15px 2px 15px;
+}
+
+.views-field-tid {
+    padding: 10px;
+}
+
+.views-field-field-apercu-fid {
+    float: left;
+    padding-right: 20px;
+}
+
+.view-stories-previews .views-row
+{
+    clear: both;
+    padding: 25px 15px 25px 15px;
+}
+
+.views-field-name {
+    clear: left;
+    float: left;
+}
+
+.views-field-title {
+    padding-top: 15px;
+    padding-bottom: 20px;
+}
+
+.views-field-changed span, 
+.views-field-changed label{
+    font-style: italic;
+    color: #124058;
+}
+
+.views-field-changed {
+    padding-bottom: 10px;
+}
+
+.views-field-picture {
+    clear: left;
+}
+
+.views-field-title, 
+.views-field-title a:link,
+.views-field-title a:hover, 
+.views-field-title a:visited 
+{
+	font-size: 22px;
+	font-weight:300;
+	padding: 0 0 0.5em;
+	margin: 0;
+	color: #6272d0;
+}
+
+.node-inner .content {
+    padding-top: 10px;
+}
+
+.node-inner p {
+}
+
+.node-inner span.submitted {
+    clear: left;
+}
+
+.node-inner ul,
+.node-inner h4{
+    clear: left;
+}
+
+.embed-video {
+    text-align: center;
+    padding: 10px;
+}
+
+video {
+    border: 1px solid #dedede;
+    padding: 10px;
 }
