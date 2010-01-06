@@ -11,7 +11,7 @@ body {
   font: 13px/1.5em helvetica, Arial, sans-serif;
   letter-spacing:0.03em;
   color: #2a2b2c;
-  background: url(images/bg-branches-2.png) no-repeat top right;
+  background-color: #ffffcc;
 }
 
 
@@ -157,25 +157,24 @@ div.status {
 ---------------------------------
 *  delete when starting a new theme */
 
-#footer { background-color: #efefef; }
 #sidebar-first {	background: #e7edff; }
 #sidebar-second { background: #ffd075; }
 #navigation { background-color: #feffa5; }
 
 #header {
     margin: auto;
-	margin-top: 15px;
-    margin-bottom: 20px;
-	width: 900px; /* edit to change the width of the page */
-	-moz-border-radius: 20px;
-    border: 4px solid #d0d6e8;
-	padding: 10px;
-    background: #dedede;
+    background: url(images/header-bg.png) no-repeat top center;
     text-align: center;
+	height: 210px;
+}
+
+#main {
+    background: url(images/main-bg.png) repeat-y top center;
 }
 
 #logo-title {
 	text-align: center;
+	padding-top: 20px;
 }
 
 .field-type-filefield  {
