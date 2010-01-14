@@ -19,13 +19,12 @@ body {
 
 a:link, a:visited {
   text-decoration: none;
-  color: #e76d0c;
+  color: #009933;
 }
 
 a:hover, a:active {
   text-decoration: underline;
-  font-weight: bold;
-  color: #e76d0c;
+  color: #009933;
 }
 
 /* Titles  */
@@ -38,14 +37,14 @@ h1
 	font-weight:300;
 	padding: 0 0 0.5em;
 	margin: 0;
-	color: #6272d0;
+	color: #993300;
 }
 
 h2 {
 	font-size:1.8em;
 	font-weight:300;
 	margin-bottom:0.75em;
-	color: #124058;
+	color: #993300;
 }
 
 h3 {font-size:1.4em;margin-bottom:1em;}
@@ -157,10 +156,22 @@ div.status {
 ---------------------------------
 *  delete when starting a new theme */
 
-#sidebar-first {	background: #e7edff; }
-#sidebar-second { background: #ffd075; }
-#navigation { background-color: #feffa5; }
+#primary { 
+	font-size: 1.2em;
+width: 30%;
+margin-left: 50px;
+padding: 5px;
+border-bottom: 2px dotted #339900;
+}
 
+#primary ul.links li a {
+	color: #009933;
+}
+
+#primary ul.links li a.active {
+	color: #993300;
+	font-size: 1.3em;
+}
 #header {
     margin: auto;
     background: url(images/header-bg.png) no-repeat top center;
@@ -194,7 +205,7 @@ div.status {
 }
 
 .taxonomy ul li {
-	background: #79b3d0;
+	background: #330099;
 	padding: 2px 15px 2px 15px;
 }
 
@@ -206,8 +217,8 @@ div.status {
 	width: 100%;
 }
 
-.views-field-tid span {
-	background: #79b3d0;
+.views-field-tid span a{
+	background: #330099;
 	padding: 2px 15px 2px 15px;
 }
 
@@ -220,7 +231,8 @@ div.status {
     padding-right: 20px;
 }
 
-.view-stories-previews .views-row
+.view-stories-previews .views-row,
+.view-taxonomy-term .views-row
 {
     clear: both;
     padding: 25px 15px 25px 15px;
@@ -236,13 +248,13 @@ div.status {
     padding-bottom: 20px;
 }
 
-.views-field-changed span, 
-.views-field-changed label{
+.views-field-created span, 
+.views-field-created label{
     font-style: italic;
-    color: #124058;
+    color: #009933;
 }
 
-.views-field-changed {
+.views-field-created {
     padding-bottom: 10px;
 }
 
@@ -259,7 +271,7 @@ div.status {
 	font-weight:300;
 	padding: 0 0 0.5em;
 	margin: 0;
-	color: #6272d0;
+	color: #993300;
 }
 
 .node-inner .content {
@@ -286,4 +298,9 @@ div.status {
 video {
     border: 1px solid #dedede;
     padding: 10px;
+}
+
+.panel-pane h2.pane-title {
+	padding: 5px;
+font-size: 1.2em;
 }

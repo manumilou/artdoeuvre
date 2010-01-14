@@ -27,7 +27,7 @@
 
 #footer {
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
-	height: 120px;
+	height: 100px;
     background: #ffffcc url(images/footer-bg.png) no-repeat bottom center;
     text-align: center;
 }
@@ -82,6 +82,8 @@
 }
 #sidebar-second {
   width: 200px;           /* RIGHT value */
+margin-right: 100px;
+margin-top: 50px;
 }
 
 /** Columns inner
