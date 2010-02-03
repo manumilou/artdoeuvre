@@ -12,7 +12,7 @@
 */
 
 #page {
-	width: 1000px; /* edit to change the width of the page */
+	width: 1010px; /* edit to change the width of the page */
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
     /*
 	margin-top: 30px;
@@ -27,8 +27,8 @@
 
 #footer {
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
-	height: 100px;
-    background: #ffffcc url(images/footer-bg.png) no-repeat bottom center;
+	height: 150px;
+    background: transparent url(images/footer-bg.png) no-repeat bottom center;
     text-align: center;
 }
 /** LAYOUT RULES
@@ -41,6 +41,7 @@
   width: 80%;
   margin-right: -100%;
   padding-left: 40px;
+	margin-top: 30px;
 }
 .sidebar {
   float: left;

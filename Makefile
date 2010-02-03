@@ -37,10 +37,8 @@ default:
 setup: initial_setup update_db
 
 fix_permissions:
-	sudo chown -R www-data public_html/sites/default
-	sudo chmod g+rw -R public_html/sites/default
-	sudo chown -R www-data public_html/sites/omhm.demo.savoirfairelinux.com
-	sudo chmod g+rw -R public_html/sites/omhm.demo.savoirfairelinux.com
+	#chown -R www-data public_html/sites/default
+	#chmod g+rw -R public_html/sites/default
 
 initial_setup:
 	echo "Setting up initial db and environment:"
@@ -70,7 +68,7 @@ commit_db: dump fix_permissions
 	for db_name in $(db_names); do \
 	  mv $(dump_filename) $(db_git_filename) ; \
 	done ;
-	git commit sql/*.sql -m "Commited new databases snapshots"
+	git commit sql/*.sql -m "Commited new database snapshot"
 
 cleanup:
 	find ./sql/dumps/ -name '*.sql' -mtime +$(keep_num_days_of_backup) -exec rm {} \;

@@ -1,0 +1,227 @@
+<?php
+// $Id: pingfm.module,v 1.1.2.8 2009/03/27 19:49:10 robloach Exp $
+
+/**
+ * @file
+ * Provides Drupal integration with Ping.fm.
+ */
+
+/**
+ * Implementation of hook_help().
+ */
+function pingfm_help($path, $arg) {
+  switch ($path) {
+  case 'admin/help#pingfm':
+    $output = '<p>'. t('Provides interaction with the Ping.fm web service.') .'</p>';
+    return $output;
+  case 'admin/settings/pingfm':
+    return '<p>'. t('The following provides the configuration options for the !pingfm web service.', array('!pingfm' => l('Ping.fm', 'http://ping.fm'))) .'</p>';
+  }
+}
+
+/**
+ * Implementation of hook_menu().
+ */
+function pingfm_menu() {
+  $items['admin/settings/pingfm'] = array(
+    'title' => 'Ping.fm',
+    'description' => 'Configuration settings for Ping.fm.',
+    'access arguments' => array('administer pingfm'),
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pingfm_admin_settings'),
+    'file' => 'pingfm.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+  $items['admin/settings/pingfm/general'] = array(
+    'title' => 'General',
+    'description' => 'General configruation options for Ping.fm',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('pingfm_admin_settings'),
+    'file' => 'pingfm.admin.inc',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+  );
+  $items['pingfm/%user/%'] = array(
+    'title' => 'Ping.fm',
+    'description' => 'A custom URL request from Ping.fm.',
+    'access arguments' => array('access content'),
+    'page callback' => 'pingfm_custom_url',
+    'page arguments' => array(1, 2),
+    'file' => 'pingfm.admin.inc',
+    'type' => MENU_CALLBACK,
+  );
+  return $items;
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function pingfm_perm() {
+  return array('administer pingfm', 'post to ping.fm');
+}
+
+/**
+ * Implementation of hook_user().
+ */
+function pingfm_user($op, &$edit, &$account, $category = NULL) {
+  if ($op == 'form' && $category == 'account') {
+    $form['pingfm'] = array(
+      '#type' => 'fieldset',
+      '#title' => t('Ping.fm'),
+      '#collapsible' => TRUE,
+      '#collapsed' => !(isset($account->pingfm_app_key) && !empty($account->pingfm_app_key)),
+      '#weight' => 4,
+      '#description' => t('Input your !pingfm credentials below.', array('!pingfm' => l('Ping.fm', 'http://ping.fm'))),
+      '#access' => user_access('post to ping.fm', $account) || user_access('administer pingfm'),
+    );
+    $custom_url_details = '';
+    if (isset($account->pingfm_app_key) && !empty($account->pingfm_app_key)) {
+      $custom_url_details = t('In the <a href="!custom_url">Custom URL</a> on Ping.fm, enter the following: "%custom_url".', array(
+        '!custom_url' => 'http://ping.fm/custom/',
+        '%custom_url' => url('pingfm/'. $account->uid .'/'. md5($account->pingfm_app_key), array('absolute' => TRUE)),
+      ));
+    }
+    $form['pingfm']['pingfm_app_key'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Application key'),
+      '#default_value' => isset($edit['pingfm_app_key']) ? $edit['pingfm_app_key'] : '',
+      '#description' => t('Your !app_key to allow remote posting. ', array('!app_key' => l(t('application key'), 'http://ping.fm/key/'))) . $custom_url_details,
+    );
+    return $form;
+  }
+}
+
+/**
+ * Implementation of hook_form_alter().
+ */
+function pingfm_form_alter(&$form, $form_state, $form_id) {
+  if (substr($form_id, -10) == '_node_form') {
+    $types = variable_get('pingfm_nodetypes', array());
+    if (!empty($types[$form['type']['#value']])) {
+      global $user;
+      $form['pingfm'] = array(
+        '#type' => 'fieldset',
+        '#title' => 'Ping.fm',
+        '#access' => user_access('post to ping.fm') && isset($user->pingfm_app_key) && !empty($user->pingfm_app_key),
+        '#collapsible' => TRUE,
+        '#collapsed' => TRUE,
+        '#tree' => TRUE,
+      );
+      $form['pingfm']['post'] = array(
+        '#type' => 'checkbox',
+        '#title' => t('Announce this post on Ping.fm'),
+        '#default_value' => FALSE,
+        '#id' => 'pingfm-toggle',
+      );
+      $form['pingfm']['method'] = array(
+        '#type' => 'select',
+        '#title' => t('Method'),
+        '#description' => t('Which type of update to make when posting.'),
+        '#options' => array(
+          'default' => t('Default'),
+          'status' => t('Status'),
+          'microblog' => t('Micro-blog'),
+          'blog' => t('Blog'),
+        ),
+        '#default_value' => 'default',
+      );
+      $form['pingfm']['format'] = array(
+        '#type' => 'textfield',
+        '#title' => t('Format'),
+        '#description' => t('How this post should be formated. You can use !url, !title, !teaser and !user as replacement text.'),
+        '#default_value' => variable_get('pingfm_default_format', '!title: !url'),
+      );
+    }
+  }
+}
+
+/**
+ * Implementation of hook_nodeapi().
+ */
+function pingfm_nodeapi(&$node, $op) {
+  switch ($op) {
+    case 'insert':
+    case 'update':
+      if (!empty($node->status) && !empty($node->pingfm) && !empty($node->pingfm['post'])) {
+        $replacements = array(
+          '!title' => $node->title,
+          '!teaser' => strip_tags($node->teaser),
+          '!url' => url('node/'. $node->nid, array('absolute' => TRUE)),
+          '!user' => $node->name,
+        );
+        $result = pingfm_post(t($node->pingfm['format'], $replacements), $node->pingfm['method'], $node->title, user_load(array('uid' => $node->uid)));
+        drupal_set_message($result ? t('Successfully posted to Ping.fm') : t('Failed posting to Ping.fm'), $result ? 'status' : 'warning');
+      }
+      break;
+  }
+}
+
+/**
+ * Posts an update on Ping.fm.
+ *
+ * @param $post_method
+ *   Posting method.  Either "default", "blog", "microblog" or "status."
+ * @param $body
+ *   Message body.
+ * @param $title
+ *   Title of the posted message.  This will only appear if the specified
+ *   service supports a title field.  Otherwise, it will be discarded.
+ * @param $account
+ *   The user object that is posting the message. If nothing is passed,
+ *   then it is assumed to be the currently logged in user.
+ */
+function pingfm_post($body, $post_method = 'default', $title = NULL, $account = NULL) {
+  $pingfm = pingfm_phpingfm($account);
+  return $pingfm->post($post_method, $body, $title);
+}
+
+/**
+ * Retrieves a PHPingFM interface for the given user.
+ *
+ * @param $account
+ *   The user account that is invoking the interface. If nothing is passed, will
+ *   be the currently logged in user.
+ * @return
+ *   An interface to the PHPingFM library. Either that or NULL on failure.
+ */
+function pingfm_phpingfm($account = NULL) {
+  static $pingfm_accounts = array();
+  if (!isset($account->uid)) {
+    global $user;
+    $account = $user;
+  }
+  if (!isset($pingfm_accounts[$account->uid])) {
+    $dev_key = variable_get('pingfm_dev_key', '4c625cb344fe57ba6167eb16036c7c35');
+    $app_key = isset($account->pingfm_app_key) ? $account->pingfm_app_key : NULL;
+    $debug = variable_get('pingfm_debug', FALSE);
+    module_load_include('php', 'pingfm', 'phpingfm/PHPingFM');
+    $pingfm_accounts[$account->uid] = new PHPingFM($dev_key, $app_key, $debug);
+  }
+  return $pingfm_accounts[$account->uid];
+}
+
+/**
+ * Menu callback; A request from the Ping.fm Custom URL service.
+ */
+function pingfm_custom_url($user, $key) {
+  // Construct the data array.
+  $data = array(
+    'method' => isset($_POST['method']) ? $_POST["method"] : NULL,
+    'title' => isset($_POST['title']) ? $_POST["title"] : NULL,
+    'message' => isset($_POST['message']) ? $_POST["message"] : NULL,
+    'media' => isset($_POST['media']) ? $_POST["media"] : NULL,
+    'raw_message' => isset($_POST['raw_message']) ? $_POST["raw_message"] : NULL,
+    'trigger' => isset($_POST['trigger']) ? $_POST["trigger"] : NULL,
+  );
+  if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    // Check the application key.
+    if ($key == md5($user->pingfm_app_key)) {
+      module_invoke_all('pingfm_custom_url', $user, $data);
+    }
+    else {
+      return t('Invalid key provided. You must provide %url as the <a href="!customurl">custom URL</a>.', array('!customurl' => 'http://ping.fm/custom/', '%url' => url('pingfm/'. $user->uid .'/VALID_APP_KEY', array('absolute' => TRUE))));
+    }
+  }
+  else {
+    return t('Ping.fm <a href="!customurl">custom URLs</a> requires POST requests.', array('!customurl' => 'http://ping.fm/custom/'));
+  }
+}

@@ -1,0 +1,69 @@
+<?php
+// $Id: bot_pingfm.module,v 1.1.2.1 2008/07/27 18:09:03 robloach Exp $
+
+/**
+ * @file
+ * Enables the ability for users to post Ping.fm updates from IRC.
+ */
+
+/**
+ * Implementation of hook_help().
+ */
+function bot_pingfm_help($path, $arg) {
+  switch ($path) {
+    case 'irc:features':
+      return array(t('PingFM'));
+    case 'irc:features#pingfm':
+      return t('Post updates directly to Ping.fm by using "!botname: pingfm <message>".', array('!botname' => variable_get('bot_nickname', 'BOTNAME')));
+  }
+}
+
+/**
+ * Implementation of hook_perm().
+ */
+function bot_pingfm_perm() {
+  return array('make ping.fm bot updates');
+}
+
+/**
+ * Listen for conversation directed at, or around, the bot.
+ *
+ * @param $data
+ *   The regular $data object prepared by the IRC library.
+ * @param $from_query
+ *   Boolean; whether this was a queried request.
+ */
+function bot_pingfm_irc_msg_channel($data, $from_query = FALSE) {
+  $bot_name = variable_get('bot_nickname', 'bot_module');
+  $addressed = $from_query ? '' : "\s*${bot_name}[\:,-]\s*"; // bot mentioned?
+  $to = $from_query ? $data->nick : $data->channel;
+
+  // Check if they're posting a note to Ping.fm
+  if (preg_match("/^($addressed)pingfm? (.*)$/i", $data->message, $matches)) {
+    $user = bot_authenticate($data);
+    if (user_access('make ping.fm bot updates', $user)) {
+      if (isset($user->pingfm_app_key) && !empty($user->pingfm_app_key)) {
+        $result = pingfm_post($matches[2], 'default', NULL, $user);
+        if ($result) {
+          bot_message($to, t('!nick: Successfully posted to Ping.fm.', array('!nick' => $data->nick)));
+        }
+        else {
+          bot_message($to, t('!nick: Failed posting to Ping.fm.', array('!nick' => $data->nick)));
+        }
+      }
+      else {
+        bot_message($to, t('!nick: You have not setup your Ping.fm credentials.', array('!nick' => $data->nick)));
+      }
+    }
+    else {
+      bot_message($to, t('!nick: You do not have access to post on Ping.fm.', array('!nick' => $data->nick)));
+    }
+  }
+}
+
+/**
+ * All responses are available via a query.
+ */
+function bot_pingfm_irc_msg_query($data) {
+  bot_pingfm_irc_msg_channel($data, TRUE);
+}

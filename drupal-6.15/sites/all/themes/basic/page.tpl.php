@@ -4,6 +4,8 @@
 
   <head>
     <title><?php print $head_title; ?></title>
+    <meta name="description" content="Engagé dans le combat pour une création savoureuse libre à l'aide d'outils open-source, ce site est le fruit de nos travaux">
+    <meta name="keywords " content="animation, stopmotion, stop motion, video, html5, court-métrage, short movie, linux, open-source, ubuntu, cinelerra, gimp, pitivi">
     <?php print $head; ?>
     <?php print $styles; ?>
     <!--[if lte IE 6]><style type="text/css" media="all">@import "<?php print $base_path . path_to_theme() ?>/css/ie6.css";</style><![endif]-->
@@ -66,7 +68,7 @@
           <?php if ($breadcrumb || $title || $mission || $messages || $help || $tabs): ?>
             <div id="content-header">
 
-              <?php if ($title): ?>
+              <?php if (($title) && $node->title != 'Accueil'): ?>
                 <h1 class="title"><?php print $title; ?></h1>
               <?php endif; ?>
 

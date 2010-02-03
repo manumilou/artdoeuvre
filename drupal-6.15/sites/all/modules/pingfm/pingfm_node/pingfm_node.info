@@ -1,0 +1,12 @@
+; $Id: pingfm_node.info,v 1.1.2.1 2009/03/27 19:49:11 robloach Exp $
+name = Ping.fm Node
+description = Allows the creation of nodes from Ping.fm.
+core = 6.x
+dependencies[] = pingfm
+
+; Information added by drupal.org packaging script on 2009-03-28
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "pingfm"
+datestamp = "1238199707"
+

@@ -11,7 +11,7 @@ body {
   font: 13px/1.5em helvetica, Arial, sans-serif;
   letter-spacing:0.03em;
   color: #2a2b2c;
-  background-color: #ffffcc;
+	background: url(images/body-bg.png) repeat-x top left;
 }
 
 
@@ -31,13 +31,17 @@ a:hover, a:active {
 
 h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
 
-h1
+h1,
+.block h3
 {
 	font-size: 2.2em;
 	font-weight:300;
-	padding: 0 0 0.5em;
+	padding: 0px 0 0px 40px;
 	margin: 0;
 	color: #993300;
+	color: #124058;
+border-bottom: 1px dotted #124058;
+	background: url(images/star.png) no-repeat center left;
 }
 
 h2 {
@@ -87,6 +91,7 @@ pre {
 	padding: 5px;
 	margin: 5px 0;
 	border: 1px solid #aaa;
+	overflow: auto;
 }
 
 /* List Styles */
@@ -176,11 +181,12 @@ border-bottom: 2px dotted #339900;
     margin: auto;
     background: url(images/header-bg.png) no-repeat top center;
     text-align: center;
-	height: 210px;
+	height: 272px;
 }
 
 #main {
     background: url(images/main-bg.png) repeat-y top center;
+	clear: both;
 }
 
 #logo-title {
@@ -196,37 +202,51 @@ border-bottom: 2px dotted #339900;
 /**
  * Taxonomy terms style
  */
-.taxonomy ul li a, 
+.views-field-tid span a:hover,
 .taxonomy ul li a:hover
 {
-	color: #fff;
+	color: #330099;
 	text-decoration: none;
 	width: 100%;
 }
 
-.taxonomy ul li {
-	background: #330099;
-	padding: 2px 15px 2px 15px;
-}
-
-.views-field-tid span a, 
-.views-field-tid span a:hover
+.views-field-tid span a,
+.taxonomy ul li a
 {
-	color: #fff;
+	color: #a595c6;
 	text-decoration: none;
 	width: 100%;
 }
 
-.views-field-tid span a{
-	background: #330099;
-	padding: 2px 15px 2px 15px;
+.views-field-tid,
+.taxonomy ul li {
+	padding: 10px 0 10px 0 ;
 }
 
-.views-field-tid {
-    padding: 10px;
+.views-view-grid .views-field-tid {
+	padding:0 0 10px 0;
 }
 
 .views-field-field-apercu-fid {
+    float: left;
+    padding-right: 20px;
+}
+
+.view-stories-previews table {
+	padding-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.views-view-grid .views-field-field-apercu-fid {
+    float: none;
+}
+
+.views-view-grid .view-content
+	padding-top: 20px;
+}
+
+views-field-field-apercu-fid {
     float: left;
     padding-right: 20px;
 }
@@ -240,7 +260,6 @@ border-bottom: 2px dotted #339900;
 
 .views-field-name {
     clear: left;
-    float: left;
 }
 
 .views-field-title {
@@ -269,7 +288,7 @@ border-bottom: 2px dotted #339900;
 {
 	font-size: 22px;
 	font-weight:300;
-	padding: 0 0 0.5em;
+	padding: 0 0 0;
 	margin: 0;
 	color: #993300;
 }
@@ -303,4 +322,108 @@ video {
 .panel-pane h2.pane-title {
 	padding: 5px;
 font-size: 1.2em;
+border-bottom: 2px solid #993300;
+}
+
+#mini-panel-commentaires .panel-separator {
+	background:none;
+}
+
+#block-nice_menus-1 h3.title {
+	display: none;
+}
+
+#block-nice_menus-1 {
+	padding-left: 50px;
+padding-top: 40px;
+	font-size: 1.5em;
+}
+
+ul.nice-menu, ul.nice-menu-down
+{
+	border: none;
+	border-top: none;
+border: 3px groove #dedede;
+padding: 5px;
+}
+
+ul.nice-menu ul, ul.nice-menu-down ul {
+	border: 1px solid #000;
+}
+
+#header-region ul.nice-menu ul li {
+	background: #fff;
+	border: 1px solid #0f65ae;
+}
+
+#header-region ul.nice-menu li,
+#header-region ul.nice-menu-down li,
+#header-region ul.nice-menu-down li.menuparent {
+	border: none;
+	width: 200px;
+	background: transparent url(images/tabs-option-off.png) no-repeat center left;
+}
+
+ul.nice-menu a {
+	text-align: left;
+	padding-left: 30px;
+color: #0f65ae;
+}
+
+ul.nice-menu a:hover {
+	text-decoration: none;
+	color: #990033;
+}
+
+ul.nice-menu a.active {
+	text-decoration: none;
+	color: #990033;
+	font-size: 1.0em;
+}
+
+.item-list ul li {
+	list-style-type: circle;
+}
+
+#block-views-stories_previews-block_1 .content {
+	padding-top: 25px;
+	padding-left: 40px;
+}
+
+#block-views-stories_previews-block_1 .content td {
+	padding-bottom: 15px;
+}
+
+#comments {
+	padding-top: 15px;
+}
+
+#comments .comment-folded {
+	padding: 10px;
+}
+
+#comments .comment-folded span.subject a {
+	color: #2a2b2c;
+}
+
+#block-views-Les_chefs-block_1 .view-Les-chefs {
+	padding: 20px 10px 30px 50px;
+}
+
+#block-views-Les_chefs-block_1 .view-Les-chefs table.views-view-grid td {
+	width: 50px;
+	padding: 10px 20px 10px 20px;
+}
+
+#block-views-Les_chefs-block_1 .view-Les-chefs{
+	text-align: center;
+}
+
+.fivestar-form-item {
+	padding: 0px 0px 20px 0;
+}
+
+.links {
+	float: right;
+	padding-top: 15px;
 }

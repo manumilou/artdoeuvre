@@ -1,0 +1,14 @@
+; $Id: bot_pingfm.info,v 1.1.2.1 2008/07/27 18:09:03 robloach Exp $
+name = Ping.fm Bot
+package = Bot
+description = Allows users to post to Ping.fm through IRC. Note that this requires http://drupal.org/node/273116 . 
+dependencies[] = bot
+dependencies[] = pingfm
+core = 6.x
+
+; Information added by drupal.org packaging script on 2009-03-28
+version = "6.x-1.x-dev"
+core = "6.x"
+project = "pingfm"
+datestamp = "1238199707"
+
