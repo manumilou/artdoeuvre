@@ -12,7 +12,7 @@
 */
 
 #page {
-	width: 1010px; /* edit to change the width of the page */
+	width: 990px; /* edit to change the width of the page */
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
     /*
 	margin-top: 30px;
@@ -22,13 +22,14 @@
     border: 4px solid #d0d6e8;
     background: #dedede;
 */
+	background: #ffffff;
 }
 
 
 #footer {
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
-	height: 150px;
-    background: transparent url(images/footer-bg.png) no-repeat bottom center;
+	height: 50px;
+    background: transparent url(images/main-menu-bg.png) repeat-x bottom center;
     text-align: center;
 }
 /** LAYOUT RULES
@@ -38,10 +39,8 @@
 
 #content {
   float: left;
-  width: 80%;
+  width: 100%;
   margin-right: -100%;
-  padding-left: 40px;
-	margin-top: 30px;
 }
 .sidebar {
   float: left;
@@ -71,20 +70,20 @@
 
 .two-sidebars .center,
 .sidebar-left .center {
-  margin-left: 190px;     /* LEFT value */
+  margin-left: 250px;     /* LEFT value */
 }
 #sidebar-first {
-  width: 190px;           /* LEFT value */
-	margin-right: -190px;    /* negative LEFT value */
+  width: 250px;           /* LEFT value */
+	margin-right: -250px;    /* negative LEFT value */
 }
 .two-sidebars .center,
 .sidebar-right .center {
-  margin-right: 200px;    /* RIGHT value */
+  margin-right: 250px;    /* RIGHT value */
 }
 #sidebar-second {
-  width: 200px;           /* RIGHT value */
-margin-right: 100px;
-margin-top: 50px;
+  width: 250px;           /* RIGHT value */
+margin-top: 16px;
+background: transparent url(images/sidebar-bg.png) repeat-y center center;
 }
 
 /** Columns inner

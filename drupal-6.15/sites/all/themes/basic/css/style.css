@@ -11,20 +11,28 @@ body {
   font: 12px "Lucida Grande", Verdana, georgia helvetica, Arial, sans-serif;
   letter-spacing:0.03em;
   color: #777;
+  background-color: #dedede;
 	/*background: url(images/body-bg.png) repeat-x top left;*/
 }
 
+#content-inner {
+	padding: 20px 10px 0 10px;
+}
+
+#sidebar-content-inner {
+	padding: 0 10px 0 10px;
+}
 
 /* Links */
 
 a:link, a:visited {
   text-decoration: none;
-  color: #009933;
+  color: #6699ff;
 }
 
 a:hover, a:active {
   text-decoration: underline;
-  color: #009933;
+  color: #6699ff;
 }
 
 a:focus {
@@ -40,26 +48,29 @@ outline: none;
 h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
 
 h1,
-.block h3.title
-{
+.block h3.title{
+
 	font-family: verdana, helvetica, arial, sans-serif;
-	font-size: 24x;
+	font-size: 24px;
 	font-weight:600;
 letter-spacing:+2px;
 	padding: 0px 0 0px 40px;
 	margin: 0;
-	color: #124058;
-border-bottom: 1px dotted #124058;
+	color: #000;
 	background: url(images/star.png) no-repeat center left;
+}
+
+.block h3.title{
+border-bottom: 1px dotted #dedede;
 }
 
 h2 {
 	font-size:18px;
 	font-family: verdana, helvetica, arial, sans-serif;
-	font-weight:400;
+	font-weight:600;
 	letter-spacing:1.5px;
 	margin-bottom:0.75em;
-	color: #993300;
+	color: #000;
 	text-transform: uppercase;
 }
 
@@ -191,13 +202,14 @@ border-bottom: 2px dotted #339900;
 }
 #header {
     margin: auto;
-    background: url(images/header-bg.png) no-repeat top center;
+    /*background: url(images/header-bg.png) no-repeat top center;*/
     text-align: center;
 	height: 272px;
 }
 
 #main {
-    background: url(images/main-bg.png) repeat-y top center;
+    /*background: url(images/main-bg.png) repeat-y top center;*/
+    background: url(images/artdoeuvre-separator-main.png) repeat-x top center;*/
 	clear: both;
 }
 
@@ -284,14 +296,10 @@ views-field-field-apercu-fid {
     padding-bottom: 20px;
 }
 
-.views-field-created span, 
-.views-field-created label{
-    font-style: italic;
-    color: #009933;
-}
-
 .views-field-created {
-    padding-bottom: 10px;
+    padding: 10px 0 10px 0;
+	color: #777;
+    font-style: italic;
 }
 
 .views-field-picture {
@@ -307,7 +315,7 @@ views-field-field-apercu-fid {
 	font-weight:300;
 	padding: 0 0 0;
 	margin: 0;
-	color: #993300;
+	color: #ffcc33;
 }
 
 #mini-panel-commentaires .views-field-title, 
@@ -354,7 +362,7 @@ video {
 .panel-pane h2.pane-title {
 	padding: 5px;
 font-size: 14px;
-border-bottom: 2px solid #993300;
+border-bottom: 2px solid #dedede;
 }
 
 #mini-panel-commentaires .panel-separator {
@@ -414,11 +422,8 @@ ul.nice-menu a.active {
 }
 */
 .block-nice_menus {
-    padding: 40px 0 0px 50px;
-    background: transparent url("images/omhm-menu-background.png") no-repeat bottom left;
-    height: 40px;
+    height: 50px;
     clear: left;
-	font-size: 1.5em;
     font-weight: 550;
     width: 100%;
 }
@@ -448,20 +453,16 @@ ul.nice-menu, ul.nice-menu ul
     height: 100%;
 }
 
-.block .content ul.nice-menu {
-}
-
 #header-region ul.nice-menu li {
-    background: transparent;
     border: none;
-    width: 150px;
-    padding: 0px 0px 0px 0px;
+    width: 170px;
+    padding: 0px 10px 0px 10px;
     height: 100%;
     list-style-image: none;
 }
 
 #header-region ul.nice-menu>li {
-    height: 40px;
+    height: 50px;
     margin: 0px;
 }
 
@@ -474,11 +475,12 @@ ul.nice-menu a {
 #nice-menu-1>li>a {
     margin: auto;
     text-align: center;
-    border-left: 1px solid white;
+    border-left: 1px dotted white;
     height: 100%;
     line-height: 15px;
     padding: 5px 0px 0px 0px;
     font-weight: bold;
+    background: transparent url(images/menu-item-normal.png) no-repeat center center; 
 }
 
 span.sf-sub-indicator { /* to remove the >> after each link */
@@ -495,8 +497,8 @@ span.sf-sub-indicator { /* to remove the >> after each link */
 
 #nice-menu-1 a {
     color: #0f65ae;
-    font-size: 13px;
-    font-family: "Arial";
+    font-size: 15px;
+    font-family: "Verdana";
     font-weight: 550;
     float: left;
     padding: 5px 0px 2px 0px;
@@ -513,8 +515,8 @@ background: transparent;
 }
 
 #nice-menu-1 > li.sfHover a, #nice-menu-1 > li.active-trail a, #nice-menu-1 > li a.active, #nice-menu-1 > li a:hover {
-    color: #2c88b7;
-	color: #990033;
+    color: #ffcc33;
+    background: transparent url(images/menu-item-over.png) no-repeat center center; 
     text-decoration: none;
 }
 
@@ -527,7 +529,6 @@ ul.nice-menu-down li.menuparent,#header-region ul.nice-menu-down li.menuparent
 ul.nice-menu-down li.menuparent:hover,#header-region ul.nice-menu-down li.over
     {
     background: #ffffff;
-    font-size: 1.25em;
 }
 
 li.menuparent ul {
@@ -572,12 +573,20 @@ li.menuparent ul li a:hover {
 }
 
 #block-views-stories_previews-block_1 .content {
-	padding-top: 25px;
-	padding-left: 40px;
+	padding: 15px 0 0 0;
 }
 
 #block-views-stories_previews-block_1 .content td {
-	padding-bottom: 15px;
+	padding: 10px;
+}
+#block-views-stories_previews-block_1 .content td {
+	text-align: center;
+	width: 50%;
+}
+
+#block-views-stories_previews-block_1 .views-field-field-apercu-fid {
+	padding: 0;
+	float: none;
 }
 
 #comments {
@@ -650,6 +659,37 @@ li.menuparent ul li a:hover {
 	letter-spacing: 3px;
 }
 
+.view-view-suggestion .view-content .views-row,
 .view-stories-previews .view-content .views-row {
-	background: transparent url(images/artdoeuvre-separator-main.png) no-repeat bottom center;
+	border: 1px groove #dceef8;
+	margin: 15px;
+}
+
+.view-view-suggestion .view-content .views-row-odd,
+.view-stories-previews .view-content .views-row-odd {
+	background: #edf0fb;
+}
+
+
+.more-link a {
+	color: #777;
+	font-style: italic;
+	font-size: 11px;
+}
+
+#block-panels_mini-commentaires {
+	padding: 0 5px 0 10px;
+}
+
+#block-panels_mini-commentaires .pane-content {
+	padding: 0 0 0 5px;
+}
+
+#block-panels_mini-commentaires .panel-pane {
+	padding: 0 0 15px 0;
+}
+
+#header-region {
+	height: 50px;
+	background: #fff;
 }
