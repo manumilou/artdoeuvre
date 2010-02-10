@@ -8,6 +8,19 @@
     <meta name="keywords " content="animation, stopmotion, stop motion, video, html5, court-métrage, short movie, linux, open-source, ubuntu, cinelerra, gimp, pitivi">
     <?php print $head; ?>
     <?php print $styles; ?>
+<link rel="stylesheet" href="/sites/all/themes/basic/css/sliding_panel.css?H" type="text/css" media="screen" />
+<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+	$(".trigger").click(function(){
+		$(".panel").toggle("fast");
+		$(this).toggleClass("active");
+		return false;
+	});
+});
+</script>
+
     <!--[if lte IE 6]><style type="text/css" media="all">@import "<?php print $base_path . path_to_theme() ?>/css/ie6.css";</style><![endif]-->
     <!--[if IE 7]><style type="text/css" media="all">@import "<?php print $base_path . path_to_theme() ?>/css/ie7.css";</style><![endif]-->
     <?php print $scripts; ?>
@@ -128,6 +141,38 @@
       </div> <!-- /main -->
 
     </div> <!-- /page -->
+
+<div class="panel">
+	<h3>Remix et partage</h3>
+	<p>Tout le contenu de ce site est publié sous licence <a href="http://creativecommons.org/licenses/by-sa/2.5/ca/">Creative Commons</a>. Vous êtes libres d'utiliser le matériel que vous trouverez sur ce site (vidéos, images, scripts, ...), de le faire gouter à vos amis et de le remixer à votre sauce.</p>
+
+<div style="clear:both;"></div>
+<div class="columns">
+	<div class="colleft">
+	<h3>Navigation</h3>
+		<ul>
+			<li><a href="http://www.artdoeuvre.org/" title="home">Spécial du jour</a></li>
+			<li><a href="http://www.artdoeuvre.org/videos" title="videos">À la carte</a></li>
+			<li><a href="http://www.artdoeuvre.org/suggestions" title="suggestions">Suggestions du chef</a></li>
+			<li><a href="http://www.artdoeuvre.org/contact" title="contact">Contact</a></li>
+			<li><a href="http://www.artdoeuvre.org/en-savoir-plus" title="about">En savoir plus</a></li>
+		</ul>
+	</div>
+
+	<div class="colright">
+		<h3>Social Stuff</h3>
+		<ul>
+			<li><a href="http://twitter.com/artdoeuvre" title="Twitter">Twitter</a></li>
+			<li><a href="http://youtube.com/artdoeuvre" title="YouTube">YouTube</a></li>
+			<li><a href="http://facebook.com/artdoeuvre" title="facebook">Facebook</a></li>
+		</ul>
+	</div>
+</div>
+<div style="clear:both;"></div>
+
+</div>
+<a class="trigger" href="#">remix</a>	
+
       <!-- ______________________ FOOTER _______________________ -->
 
       <?php if(!empty($footer_message) || !empty($footer_block)): ?>

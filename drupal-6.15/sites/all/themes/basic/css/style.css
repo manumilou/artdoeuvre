@@ -8,10 +8,10 @@ body {
    * Setting up font size, leading and font family
    * http://www.markboulton.co.uk/journal/comments/five-simple-steps-to-better-typography
    */
-  font: 13px/1.5em helvetica, Arial, sans-serif;
+  font: 12px "Lucida Grande", Verdana, georgia helvetica, Arial, sans-serif;
   letter-spacing:0.03em;
-  color: #2a2b2c;
-	background: url(images/body-bg.png) repeat-x top left;
+  color: #777;
+	/*background: url(images/body-bg.png) repeat-x top left;*/
 }
 
 
@@ -27,33 +27,45 @@ a:hover, a:active {
   color: #009933;
 }
 
+a:focus {
+outline: none;
+}
+
+#sidebar-second {
+}
+
+
 /* Titles  */
 
 h1, h2, h3, h4, h5, h6 {line-height:1.3em;}
 
 h1,
-.block h3
+.block h3.title
 {
-	font-size: 2.2em;
-	font-weight:300;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-size: 24x;
+	font-weight:600;
+letter-spacing:+2px;
 	padding: 0px 0 0px 40px;
 	margin: 0;
-	color: #993300;
 	color: #124058;
 border-bottom: 1px dotted #124058;
 	background: url(images/star.png) no-repeat center left;
 }
 
 h2 {
-	font-size:1.8em;
-	font-weight:300;
+	font-size:18px;
+	font-family: verdana, helvetica, arial, sans-serif;
+	font-weight:400;
+	letter-spacing:1.5px;
 	margin-bottom:0.75em;
 	color: #993300;
+	text-transform: uppercase;
 }
 
-h3 {font-size:1.4em;margin-bottom:1em;}
-h4 {font-size:1.2em;margin-bottom:0.8em;}
-h5 {font-size:1.1em;font-weight:600;margin-bottom:0;}
+h3 {font-size:22px;margin-bottom:1em;}
+h4 {font-size:14px;margin-bottom:0.8em;}
+h5 {font-size:12px;font-weight:600;margin-bottom:0;}
 h6 {font-size:1em;font-weight:bold;}
 
 /* Paragraph Styles */
@@ -163,7 +175,7 @@ div.status {
 
 #primary { 
 	font-size: 1.2em;
-width: 30%;
+width: 90%;
 margin-left: 50px;
 padding: 5px;
 border-bottom: 2px dotted #339900;
@@ -208,6 +220,7 @@ border-bottom: 2px dotted #339900;
 	color: #330099;
 	text-decoration: none;
 	width: 100%;
+font-weight: 400;
 }
 
 .views-field-tid span a,
@@ -216,11 +229,15 @@ border-bottom: 2px dotted #339900;
 	color: #a595c6;
 	text-decoration: none;
 	width: 100%;
+font-weight: 400;
 }
 
 .views-field-tid,
 .taxonomy ul li {
 	padding: 10px 0 10px 0 ;
+	text-transform: uppercase;
+	letter-spacing: 1.5px;
+	font-size: 11px;
 }
 
 .views-view-grid .views-field-tid {
@@ -286,12 +303,27 @@ views-field-field-apercu-fid {
 .views-field-title a:hover, 
 .views-field-title a:visited 
 {
-	font-size: 22px;
+	font-size: 18px;
 	font-weight:300;
 	padding: 0 0 0;
 	margin: 0;
 	color: #993300;
 }
+
+#mini-panel-commentaires .views-field-title, 
+ #mini-panel-commentaires .views-field-title a:link,
+ #mini-panel-commentaires .views-field-title a:hover, 
+ #mini-panel-commentaires .views-field-title a:visited 
+{
+	font-size: 13px;
+	font-weight:300;
+color: #666;
+	letter-spacing: -1px;
+	padding: 0 0 0;
+	margin: 0;
+}
+
+
 
 .node-inner .content {
     padding-top: 10px;
@@ -321,7 +353,7 @@ video {
 
 .panel-pane h2.pane-title {
 	padding: 5px;
-font-size: 1.2em;
+font-size: 14px;
 border-bottom: 2px solid #993300;
 }
 
@@ -329,14 +361,13 @@ border-bottom: 2px solid #993300;
 	background:none;
 }
 
+/** PRIMARY LINKS **/
+/*
 #block-nice_menus-1 h3.title {
 	display: none;
 }
 
 #block-nice_menus-1 {
-	padding-left: 50px;
-padding-top: 40px;
-	font-size: 1.5em;
 }
 
 ul.nice-menu, ul.nice-menu-down
@@ -360,8 +391,9 @@ ul.nice-menu ul, ul.nice-menu-down ul {
 #header-region ul.nice-menu-down li,
 #header-region ul.nice-menu-down li.menuparent {
 	border: none;
-	width: 200px;
+	width: 190x;
 	background: transparent url(images/tabs-option-off.png) no-repeat center left;
+	padding: 0 10px 0 10px;
 }
 
 ul.nice-menu a {
@@ -380,7 +412,161 @@ ul.nice-menu a.active {
 	color: #990033;
 	font-size: 1.0em;
 }
+*/
+.block-nice_menus {
+    padding: 40px 0 0px 50px;
+    background: transparent url("images/omhm-menu-background.png") no-repeat bottom left;
+    height: 40px;
+    clear: left;
+	font-size: 1.5em;
+    font-weight: 550;
+    width: 100%;
+}
 
+.block-nice_menus.block .block-inner {
+    height: 100%;
+}
+
+.block-nice_menus.block .content {
+    padding: 0px;
+    margin: 0px;
+    background: transparent;
+    height: 100%;
+}
+
+ul.nice-menu-down {
+    float: none;
+    padding-left: 5px;
+}
+
+ul.nice-menu, ul.nice-menu ul
+{
+    z-index: 100;
+}
+
+.block-nice_menus ul.nice-menu {
+    height: 100%;
+}
+
+.block .content ul.nice-menu {
+}
+
+#header-region ul.nice-menu li {
+    background: transparent;
+    border: none;
+    width: 150px;
+    padding: 0px 0px 0px 0px;
+    height: 100%;
+    list-style-image: none;
+}
+
+#header-region ul.nice-menu>li {
+    height: 40px;
+    margin: 0px;
+}
+
+ul.nice-menu a {
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+}
+
+#nice-menu-1>li>a {
+    margin: auto;
+    text-align: center;
+    border-left: 1px solid white;
+    height: 100%;
+    line-height: 15px;
+    padding: 5px 0px 0px 0px;
+    font-weight: bold;
+}
+
+span.sf-sub-indicator { /* to remove the >> after each link */
+    display: none;
+}
+
+#block-nice_menus-1 .title {
+    display: none;
+}
+
+#nice-menu-1 ul {
+    list-style: none;
+}
+
+#nice-menu-1 a {
+    color: #0f65ae;
+    font-size: 13px;
+    font-family: "Arial";
+    font-weight: 550;
+    float: left;
+    padding: 5px 0px 2px 0px;
+    background: transparent;
+}
+
+#header-region #nice-menu-1 > li.sfHover, #header-region #nice-menu-1 > li.active-trail, ul.nice-menu-down li.menuparent:hover, ul.nice-menu-down li.over, #header-region ul.nice-menu-down li:hover, #header-region ul.nice-menu-down li.over {
+    background-color: #ffffff;
+ }
+
+
+#header-region #nice-menu-1 li.menu-path-front {
+background: transparent;
+}
+
+#nice-menu-1 > li.sfHover a, #nice-menu-1 > li.active-trail a, #nice-menu-1 > li a.active, #nice-menu-1 > li a:hover {
+    color: #2c88b7;
+	color: #990033;
+    text-decoration: none;
+}
+
+
+ul.nice-menu-down li.menuparent,#header-region ul.nice-menu-down li.menuparent
+    {
+    background: transparent;
+}
+
+ul.nice-menu-down li.menuparent:hover,#header-region ul.nice-menu-down li.over
+    {
+    background: #ffffff;
+    font-size: 1.25em;
+}
+
+li.menuparent ul {
+    border: 1px solid #dedede;
+    background: #fff;
+}
+
+li.menuparent ul li a:hover {
+    background: #62a6c8;
+}
+
+#header-region ul.nice-menu li ul {
+    top: 38px;
+    width: 250px;
+}
+
+#header-region ul.nice-menu li ul li {
+    width: 250px;
+}
+
+#nice-menu-1 li ul li a {
+    background: #ffffff url(images/menu-leaf-bg.png) no-repeat top left;
+    font-size: 13px;
+    color: #2c88b7;
+    margin: auto;
+    width: 100%;
+    display: block;
+    line-height: normal;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+#nice-menu-1 li ul li a:hover {
+    font-size: 13px;
+    background: #2c88b7;
+    color: #ffffff;
+}
+
+/** LISTE OEUVRES **/
 .item-list ul li {
 	list-style-type: circle;
 }
@@ -426,4 +612,44 @@ ul.nice-menu a.active {
 .links {
 	float: right;
 	padding-top: 15px;
+}
+
+.block-nice_menus {
+	z-index: 0;
+}
+
+.block ul {
+	padding: 0 0 0.25em 0;
+}
+
+.view-view-suggestion {
+	padding: 15px 0 60px 15px;;
+}
+
+
+.view-view-suggestion .views-row{
+	padding: 15px 0 0 15px;;
+}
+
+.view-view-suggestion .picture{
+	float: left;
+	padding-right: 50px;
+}
+
+.view-view-suggestion .views-field-created span {
+	color: #777;
+}
+
+.view-display-id-page_1 {
+	padding: 15px;
+}
+
+.views-field-totalcount {
+	text-transform: uppercase;
+	padding: 0 0 20px 0;
+	letter-spacing: 3px;
+}
+
+.view-stories-previews .view-content .views-row {
+	background: transparent url(images/artdoeuvre-separator-main.png) no-repeat bottom center;
 }
