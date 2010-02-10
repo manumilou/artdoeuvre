@@ -31,6 +31,8 @@
 	height: 50px;
     background: transparent url(images/main-menu-bg.png) repeat-x bottom center;
     text-align: center;
+	width: 990px;
+	margin-top: 15px;
 }
 /** LAYOUT RULES
 ---------------------------------
@@ -83,7 +85,6 @@
 #sidebar-second {
   width: 250px;           /* RIGHT value */
 margin-top: 16px;
-background: transparent url(images/sidebar-bg.png) repeat-y center center;
 }
 
 /** Columns inner

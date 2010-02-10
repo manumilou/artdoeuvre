@@ -42,6 +42,10 @@ outline: none;
 #sidebar-second {
 }
 
+body.sidebar-right>#page>#main {
+	background: transparent url(images/sidebar-bg.png) repeat-y top right;
+}
+
 
 /* Titles  */
 
@@ -193,7 +197,6 @@ border-bottom: 2px dotted #339900;
 }
 
 #primary ul.links li a {
-	color: #009933;
 }
 
 #primary ul.links li a.active {
@@ -202,19 +205,24 @@ border-bottom: 2px dotted #339900;
 }
 #header {
     margin: auto;
-    /*background: url(images/header-bg.png) no-repeat top center;*/
+    background: #dedede  url(images/header-bg-2.png) no-repeat bottom center;
     text-align: center;
-	height: 272px;
 }
 
 #main {
     /*background: url(images/main-bg.png) repeat-y top center;*/
-    background: url(images/artdoeuvre-separator-main.png) repeat-x top center;*/
+	clear: both;
+	margin-top: 10px;
+	border-bottom: 4px solid #ccdd33;
+}
+
+#content {
+    background: url(images/artdoeuvre-separator-main.png) repeat-x center -10px ;
 	clear: both;
 }
 
 #logo-title {
-	text-align: center;
+	text-align: left;
 	padding-top: 20px;
 }
 
@@ -271,11 +279,11 @@ font-weight: 400;
     float: none;
 }
 
-.views-view-grid .view-content
+.views-view-grid .view-content {
 	padding-top: 20px;
 }
 
-views-field-field-apercu-fid {
+.views-field-field-apercu-fid {
     float: left;
     padding-right: 20px;
 }
@@ -475,7 +483,6 @@ ul.nice-menu a {
 #nice-menu-1>li>a {
     margin: auto;
     text-align: center;
-    border-left: 1px dotted white;
     height: 100%;
     line-height: 15px;
     padding: 5px 0px 0px 0px;
@@ -506,11 +513,12 @@ span.sf-sub-indicator { /* to remove the >> after each link */
 }
 
 #header-region #nice-menu-1 > li.sfHover, #header-region #nice-menu-1 > li.active-trail, ul.nice-menu-down li.menuparent:hover, ul.nice-menu-down li.over, #header-region ul.nice-menu-down li:hover, #header-region ul.nice-menu-down li.over {
-    background-color: #ffffff;
+    background-color: transparent;
  }
 
 
-#header-region #nice-menu-1 li.menu-path-front {
+#header-region #nice-menu-1 li.menu-path-front,
+#header-region #nice-menu-1 li {
 background: transparent;
 }
 
@@ -526,7 +534,7 @@ ul.nice-menu-down li.menuparent,#header-region ul.nice-menu-down li.menuparent
     background: transparent;
 }
 
-ul.nice-menu-down li.menuparent:hover,#header-region ul.nice-menu-down li.over
+ul.nice-menu-down li.menuparent:hover, #header-region ul.nice-menu-down li.over
     {
     background: #ffffff;
 }
@@ -537,21 +545,20 @@ li.menuparent ul {
 }
 
 li.menuparent ul li a:hover {
-    background: #62a6c8;
+    background: #ffcc33;
 }
 
 #header-region ul.nice-menu li ul {
     top: 38px;
-    width: 250px;
+    width: 170px;
 }
 
 #header-region ul.nice-menu li ul li {
-    width: 250px;
+    width: 170px;
 }
 
 #nice-menu-1 li ul li a {
-    background: #ffffff url(images/menu-leaf-bg.png) no-repeat top left;
-    font-size: 13px;
+    background: #ffffff;
     color: #2c88b7;
     margin: auto;
     width: 100%;
@@ -559,11 +566,11 @@ li.menuparent ul li a:hover {
     line-height: normal;
     padding-left: 1em;
     padding-right: 1em;
+	text-align: left;
 }
 
 #nice-menu-1 li ul li a:hover {
-    font-size: 13px;
-    background: #2c88b7;
+    background: #ffcc33;
     color: #ffffff;
 }
 
