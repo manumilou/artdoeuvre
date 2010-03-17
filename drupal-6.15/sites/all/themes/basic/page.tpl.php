@@ -8,22 +8,12 @@
     <meta name="keywords " content="animation, stopmotion, stop motion, video, html5, court-métrage, short movie, linux, open-source, ubuntu, cinelerra, gimp, pitivi">
     <?php print $head; ?>
     <?php print $styles; ?>
-<link rel="stylesheet" href="/sites/all/themes/basic/css/sliding_panel.css?H" type="text/css" media="screen" />
-<script type="text/javascript" src="http://jqueryjs.googlecode.com/files/jquery-1.3.2.js"></script>
 
-<script type="text/javascript">
-$(document).ready(function(){
-	$(".trigger").click(function(){
-		$(".panel").toggle("fast");
-		$(this).toggleClass("active");
-		return false;
-	});
-});
-</script>
 
     <!--[if lte IE 6]><style type="text/css" media="all">@import "<?php print $base_path . path_to_theme() ?>/css/ie6.css";</style><![endif]-->
     <!--[if IE 7]><style type="text/css" media="all">@import "<?php print $base_path . path_to_theme() ?>/css/ie7.css";</style><![endif]-->
     <?php print $scripts; ?>
+
   </head>
 
   <body class="<?php print $body_classes; ?>">
@@ -104,13 +94,13 @@ $(document).ready(function(){
             <?php print $content; ?>
           </div> <!-- /#content-area -->
 
-          <?php print $feed_icons; ?>
-
           <?php if ($content_bottom): ?>
             <div id="content-bottom">
               <?php print $content_bottom; ?>
             </div><!-- /#content-bottom -->
           <?php endif; ?>
+
+          <?php print $feed_icons; ?>
 
           </div>
         </div> <!-- /content-inner /content -->

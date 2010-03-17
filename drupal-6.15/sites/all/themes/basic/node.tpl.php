@@ -15,20 +15,9 @@
       <?php print $content; ?>
     </div>
 
-    <div class="embed-video">
-        <?php if ($node->type == 'story') { 
-		foreach ($node->field_video AS $value=>$key) { ?>
-                <video controls="controls" \
-                        src="http://artdoeuvre.org/sites/default/files/<? print $key['filename']; ?>" \
-                        type=<?php print $node->field_video[0]['filemime']; ?> \
-                        width="400" height="300"\
-                        > 
-                Upgrade your web browser to play the videos.
-                 </video>
-           <? } }
-        ?>
-    </div>
-
+    <!-- Include the html5 video tag -->
+    <?php include ('embed-html5-video.php'); ?>
+    
     <?php if ($links): ?> 
       <div class="links"> <?php print $links; ?></div>
     <?php endif; ?>

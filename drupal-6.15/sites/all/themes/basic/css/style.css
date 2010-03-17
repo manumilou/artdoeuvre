@@ -357,7 +357,7 @@ color: #666;
     clear: left;
 }
 
-.embed-video {
+#html5-embed-video {
     text-align: center;
     padding: 10px;
 }
@@ -365,6 +365,7 @@ color: #666;
 video {
     border: 1px solid #dedede;
     padding: 10px;
+    -webkit-box-reflect: below 5px;
 }
 
 .panel-pane h2.pane-title {
@@ -596,6 +597,39 @@ li.menuparent ul li a:hover {
 	float: none;
 }
 
+#block-views-stories_previews-block_1 .attachment-before .views-field-field-apercu-fid {
+	padding-right: 20px;
+	float: left;
+}
+
+#block-views-stories_previews-block_1 .attachment-before .views-row {
+    background: none;
+}
+
+#block-views-stories_previews-block_1 .attachment-before .view-footer {
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    padding-left: 30px;
+    color: #585858;
+}
+
+#block-views-stories_previews-block_1 .attachment-before .view-footer span{
+    color: #6699ff;
+    font-weight: bold;
+}
+
+#block-views-stories_previews-block_1 .attachment-before .views-field-nothing {
+    font-size: 16px;
+    padding-bottom: 10px;
+    color: #585858;
+}
+
+#block-views-stories_previews-block_1 .attachment-before .views-field-nothing span span{
+    color: #6699ff;
+    font-weight: bold;
+}
+
 #comments {
 	padding-top: 15px;
 }
@@ -631,7 +665,7 @@ li.menuparent ul li a:hover {
 }
 
 .block-nice_menus {
-	z-index: 0;
+	z-index: 100;
 }
 
 .block ul {
@@ -699,4 +733,49 @@ li.menuparent ul li a:hover {
 #header-region {
 	height: 50px;
 	background: #fff;
+}
+
+#block-views-view_social_networks-block_1 {
+	position: relative;
+	top: -75px;
+left: 740px;
+}
+
+#block-views-view_social_networks-block_1 ul li {
+	list-style-type: none;
+	float: left;
+	padding: 0 5px 0 5px;
+}
+
+#footer p {
+    padding: 10px 0 10px 10px;
+    font-size: 11px;
+}
+
+#footer span.email {
+    background: transparent url(images/email-icon.png) no-repeat center left;
+    padding-left: 25px;
+    font-size: 11px;
+}
+
+#footer span.license {
+    float: right;
+    font-size: 12px;
+    background: transparent url(images/cc.png) no-repeat top left;
+    padding: 0px 10px 0px 40px;
+    height: 20px;
+}
+
+#footer a {
+    color: #777;
+}
+
+#node-14 .content span {
+    font-size: 1.35em;
+    font-weight: bold;
+    color: #6699ff;
+}
+
+#node-14 .content a {
+    color: #777777;
 }

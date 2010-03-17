@@ -28,9 +28,9 @@
 
 #footer {
 	margin: 0 auto; /* remove 'auto' and the width to switch to a fluid width */
-	height: 50px;
+	height: 30px;
     background: transparent url(images/main-menu-bg.png) repeat-x bottom center;
-    text-align: center;
+    text-align: left;
 	width: 990px;
 	margin-top: 15px;
 }

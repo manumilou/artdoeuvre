@@ -1,0 +1,45 @@
+<?php
+
+function utils_form_alter (&$form, $form_state, $form_id) {
+}
+
+function utils_block ($op='list', $delta=0, $edit=array ()) {
+
+    switch ($op) {
+        case 'list':
+            $blocks[0]['info'] = t('Play video');
+            return $blocks;
+
+        case 'configure':
+
+        case 'view':
+            $node = node_load (arg(1));
+            $html5 = "";
+
+            // print_r ($node->field_video);
+
+            if ($node->type == 'story') {
+
+                $html5 .= "<div class='embed_video'>";
+                
+                foreach ($node->field_video AS $value=>$key) {
+                    
+                    print_r ($key['filename']);
+
+                    $html5 .= "<video 'controls' src='http://artdoeuvre.org/sites/default/files/";
+                    $html5 .= $key['filename']."'";
+                    $html5 .= " type=";
+                    $html5 .= $node->field_video[$value]['filemime'];
+                    $html5 .= " width='400' height='300'>";
+                    $html5 .= "Upgrade your web browser to play the videos";
+                    $html5 .= "</video>";
+                }
+
+                $html5 .= "</div>";
+            }
+            
+            $block['content'] = $html5;
+            return $block;
+    }
+
+}
